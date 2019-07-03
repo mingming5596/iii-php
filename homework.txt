@@ -26,4 +26,33 @@
 </table>
 
 2. 1-100找出質數
+<table>
+    <?php
+    function isPrime($n):bool {
+        $isPrime = true;
+
+        for ($i=2; $i<$n; $i++) {
+            if ($n % $i == 0) {
+                $isPrime = false;
+                break;
+            }
+        }
+
+        return $isPrime;
+    }
+
+    for ($i=0; $i<10;$i++) {
+        echo '<tr>';
+        for ($j=1; $j<=10;$j++) {
+            $newj = $j + 10 * $i;
+            $color = isPrime($newj) == 0 ? 'white' : 'yellow';
+            echo "<td bgcolor={$color}>";
+            echo $newj;
+            echo '</td>';
+        }
+        echo '</tr>';
+    }
+    ?>
+</table>
+
 3. 撲克牌交換洗牌
