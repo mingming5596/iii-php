@@ -56,3 +56,47 @@
 </table>
 
 3. 撲克牌交換洗牌
+<?php
+function shuffleee($arr) {
+  $size = count($arr);
+
+  for ($i = 0; $i < $size; $i++) {
+    // 找出除了最後一個的任意元素
+    $r = rand(0, $arr[$size - 1]);
+    // 每次範圍少1
+    $size--;
+    // 把最後元素暫存
+    $t = $arr[$size];
+    // change
+    $arr[$size] = $arr[$r];
+    $arr[$r] = $t;
+  }
+
+  return $arr;
+}
+
+// 顯示撲克牌
+$poker = shuffleee(range(0,51));
+
+$players = [[],[],[],[]];
+foreach($poker as $i => $card){
+  $players[$i%4][(int)($i/4)] = $card;
+}
+?>
+
+<table border="1" width="100%">
+  <?php
+    $suits = array("&spades;","<font color='red'>&hearts;</font>",
+      "<font color='red'>&diams;</font>","&clubs;");
+    $values = array('A',2,3,4,5,6,7,8,9,10,'J','Q','K');
+    foreach($players as $player){
+      echo '<tr>';
+      foreach($player as $card){
+        echo "<td>";
+        echo "{$suits[(int)($card/13)]}{$values[$card%13]}";
+        echo "</td>";
+      }
+      echo '</tr>';
+    }
+  ?>
+</table>
