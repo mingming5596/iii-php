@@ -1,3 +1,29 @@
 1. 99乘法表 bgcolor
+<table border="1" width="100%">
+    <?php
+    define("ROWS", 3);
+    define("FROM", 1);
+    define("TO", 3);
+
+        for ($k = 0; $k < ROWS; $k++) {
+            echo '<tr>';
+            for ($j = FROM; $j <= TO; $j++) {
+                $newj = $j + (TO-FROM+1) * $k;
+                $color = $newj % 2 ? 'pink':'yellow';
+                echo '<td bgcolor="'.$color.'">';
+                
+                for ($i = 1; $i <= 9; $i++) {
+                    $r = $newj * $i;
+                    echo "{$newj} x {$i} = {$r} <br>";
+                }
+
+                echo '</td>';
+            }
+            echo '</tr>';
+        }
+        
+    ?>
+</table>
+
 2. 1-100找出質數
 3. 撲克牌交換洗牌
