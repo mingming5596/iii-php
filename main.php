@@ -21,4 +21,6 @@ $icon = base64_encode($member->icon);
 Welcome!!! <?php echo $member->realname; ?> <br/>
 <a href="logout.php">logout</a>
 <hr />
+<?php include_once 'shoppingCart.php'; ?>
+<hr/>
 2019 Copyright.

@@ -4,6 +4,8 @@ class Cart {
     private $list;
 
     function __construct() {
+        session_start();
+
         $this->list = array();
     }
 
@@ -11,6 +13,8 @@ class Cart {
         if (!key_exists($pid, $this->list)) {
             $this->list[$pid] = $qty;
         }
+
+        $_SESSION["shoppingCartInfo"] = $this->list;
     }
 
     function modifyProducts($pid, $qty) {
@@ -44,4 +48,6 @@ class Cart {
         return $ret;
     }
 }
+
+
 
